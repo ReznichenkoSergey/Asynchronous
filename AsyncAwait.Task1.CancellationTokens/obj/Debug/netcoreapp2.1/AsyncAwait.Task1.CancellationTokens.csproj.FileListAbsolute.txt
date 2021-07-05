@@ -1,0 +1,12 @@
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\bin\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.deps.json
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\bin\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.runtimeconfig.json
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\bin\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.runtimeconfig.dev.json
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\bin\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.dll
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\bin\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.pdb
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.AssemblyInfoInputs.cache
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.AssemblyInfo.cs
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.csproj.CoreCompileInputs.cache
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.dll
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.pdb
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.genruntimeconfig.cache
+D:\EducationTests\02.Asynchronous\AsyncAwait.Task1.CancellationTokens\obj\Debug\netcoreapp2.1\AsyncAwait.Task1.CancellationTokens.csproj.AssemblyReference.cache

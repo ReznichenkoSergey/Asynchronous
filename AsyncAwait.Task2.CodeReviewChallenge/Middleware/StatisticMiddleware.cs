@@ -1,43 +1,49 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using AsyncAwait.Task2.CodeReviewChallenge.Headers;
 using CloudServices.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace AsyncAwait.Task2.CodeReviewChallenge.Middleware
 {
     public class StatisticMiddleware
     {
+        private readonly ILogger<StatisticMiddleware> _logger;
         private readonly RequestDelegate _next;
 
         private readonly IStatisticService _statisticService;
 
-        public StatisticMiddleware(RequestDelegate next, IStatisticService statisticService)
+        public StatisticMiddleware(
+            ILogger<StatisticMiddleware> logger,
+            RequestDelegate next, 
+            IStatisticService statisticService)
         {
+            _logger = logger;
             _next = next;
-            _statisticService = statisticService ?? throw new ArgumentNullException(nameof(statisticService));
+            _statisticService = statisticService;
         }
 
         public async Task InvokeAsync(HttpContext context)
-        {   
-            string path = context.Request.Path;
-
-            Task staticRegTask = Task.Run(
-                () => _statisticService.RegisterVisitAsync(path)
-                .ConfigureAwait(false)
-                .GetAwaiter().OnCompleted(UpdateHeaders));
-            Console.WriteLine(staticRegTask.Status); // just for debugging purposes
-            
-            void UpdateHeaders()
+        {
+            try
             {
-                context.Response.Headers.Add(
-                    CustomHttpHeaders.TotalPageVisits,
-                    _statisticService.GetVisitsCountAsync(path).GetAwaiter().GetResult().ToString());
-            }
+                await _statisticService.RegisterVisitAsync(context.Request.Path);
 
-            Thread.Sleep(3000); // without this the statistic counter does not work
-            await _next(context);
+                await UpdateHeadersAsync(context);
+
+                await _next(context);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+        }
+
+        private async Task UpdateHeadersAsync(HttpContext context)
+        {
+            var result = await _statisticService.GetVisitsCountAsync(context.Request.Path);
+            context.Response.Headers.Add(CustomHttpHeaders.TotalPageVisits, result.ToString());
         }
     }
 }

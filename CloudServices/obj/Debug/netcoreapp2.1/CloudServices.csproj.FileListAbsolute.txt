@@ -1,0 +1,9 @@
+D:\EducationTests\02.Asynchronous\CloudServices\bin\Debug\netcoreapp2.1\CloudServices.deps.json
+D:\EducationTests\02.Asynchronous\CloudServices\bin\Debug\netcoreapp2.1\CloudServices.dll
+D:\EducationTests\02.Asynchronous\CloudServices\bin\Debug\netcoreapp2.1\CloudServices.pdb
+D:\EducationTests\02.Asynchronous\CloudServices\obj\Debug\netcoreapp2.1\CloudServices.csproj.AssemblyReference.cache
+D:\EducationTests\02.Asynchronous\CloudServices\obj\Debug\netcoreapp2.1\CloudServices.AssemblyInfoInputs.cache
+D:\EducationTests\02.Asynchronous\CloudServices\obj\Debug\netcoreapp2.1\CloudServices.AssemblyInfo.cs
+D:\EducationTests\02.Asynchronous\CloudServices\obj\Debug\netcoreapp2.1\CloudServices.csproj.CoreCompileInputs.cache
+D:\EducationTests\02.Asynchronous\CloudServices\obj\Debug\netcoreapp2.1\CloudServices.dll
+D:\EducationTests\02.Asynchronous\CloudServices\obj\Debug\netcoreapp2.1\CloudServices.pdb

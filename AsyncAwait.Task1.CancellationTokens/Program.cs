@@ -8,6 +8,8 @@
  */
 
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AsyncAwait.Task1.CancellationTokens
 {
@@ -40,6 +42,7 @@ namespace AsyncAwait.Task1.CancellationTokens
                 }
 
                 input = Console.ReadLine();
+            
             }
 
             Console.WriteLine("Press any key to continue");
@@ -48,15 +51,43 @@ namespace AsyncAwait.Task1.CancellationTokens
 
         private static void CalculateSum(int n)
         {
-            // todo: make calculation asynchronous
-            long sum = Calculator.Calculate(n);
-            Console.WriteLine($"Sum for {n} = {sum}.");
-            Console.WriteLine();
-            Console.WriteLine("Enter N: ");
-            // todo: add code to process cancellation and uncomment this line    
-            // Console.WriteLine($"Sum for {n} cancelled...");
-                        
+            var tokenSource = new CancellationTokenSource();
+            var token = tokenSource.Token;
+
+            var task1 = Task.Run(async () =>
+            {
+                await Calculator.CalculateAsync(n, token)
+                .ContinueWith(x =>
+                {
+
+                    Console.WriteLine();
+                    Console.WriteLine($"Sum for {n} = {x.Result}.");
+                    Console.WriteLine();
+                    Console.WriteLine("Enter N: ");
+
+                }, TaskContinuationOptions.OnlyOnRanToCompletion);
+            });
+
+            Task.Run(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    var inputValue = Console.ReadLine();
+                    if (int.TryParse(inputValue, out int value))
+                    {
+                        tokenSource.Cancel();
+                        if (task1.Status != TaskStatus.RanToCompletion)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("Enter N: ");
+                        }
+                    };
+                });
+            });
+
             Console.WriteLine($"The task for {n} started... Enter N to cancel the request:");
+
+            task1.Wait();
         }
     }
 }
